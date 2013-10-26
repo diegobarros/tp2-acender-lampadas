@@ -15,6 +15,8 @@ public class LampadasAcesas {
 	
 	static LampadaAcesaGuloso lampadaAcesaGuloso;
 	static LampadaAcesaPD lampadaAcesaPD;
+	static int resultadoGuloso = 0;
+	static int resultadoPD = 0;
 	
 	static int[] ruas;
 	static String estadoInicial;
@@ -133,6 +135,8 @@ public class LampadasAcesas {
 		
 	} // Fim do método SalvarArquivo
 	
+	
+	
 	static void ImprimeCabeçalhoPrograma() {
 		
 		System.out.println("\n");
@@ -208,13 +212,24 @@ public class LampadasAcesas {
 		System.out.println("\nGRAFO: Lista de Adjacências: ");
 		System.out.println(lampadaAcesaGuloso.getGrafo().ListaAdjInt());
 		
+		
+		long tempoInicioGuloso = System.currentTimeMillis();
+		resultadoGuloso = lampadaAcesaGuloso.minimizar(ruas, estadoInicial, lampadaImportante);
+		long tempoFimGuloso = System.currentTimeMillis();
+		
 		System.out.println("\nAlgoritmo Guloso");
 		System.out.println("Resultado: " + lampadaAcesaGuloso.getNumeroOperacoes());
-		System.out.println("TEMPO: ");
+		System.out.println("TEMPO: " + TempoExecucao(tempoInicioGuloso, tempoFimGuloso));
+		
+
+		long tempoInicioPD = System.currentTimeMillis();
+		resultadoGuloso = lampadaAcesaPD.minimizar(ruas, estadoInicial, lampadaImportante);
+		long tempoFimPD = System.currentTimeMillis();
 		
 		System.out.println("\nAlgoritmo de Programação Dinâmica");
 		System.out.println("Resultado: " + lampadaAcesaPD.getNumeroOperacoes());
-		System.out.println("TEMPO: ");
+		System.out.println("TEMPO: " + TempoExecucao(tempoInicioPD, tempoFimPD));
+		
 		
 		System.out.println();
 		ImprimeInformacoesMaquina();
