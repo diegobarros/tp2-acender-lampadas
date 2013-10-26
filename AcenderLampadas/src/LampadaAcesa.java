@@ -16,7 +16,7 @@ public abstract class LampadaAcesa implements ILampadaAcesa {
 	
 	protected int numeroOperacoes;
 	
-	private Grafo grafo;
+	protected Grafo grafo;
 	private int numeroVertices;
 
 	/**
