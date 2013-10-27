@@ -11,8 +11,8 @@ public abstract class LampadaAcesa implements ILampadaAcesa {
 	
 	private int[] ruas;
 	
-	private String estadoInicial;
-	private String lampadaImportante;
+	private char[] estadoInicial;
+	private char[] lampadaImportante;
 	
 	protected int numeroOperacoes;
 	
@@ -68,8 +68,8 @@ public abstract class LampadaAcesa implements ILampadaAcesa {
 		else
 			throw new IllegalArgumentException("O número de ruas deve estar entre 2 e 50 inclusive!");
 		
-		this.estadoInicial = estadoInicial;
-		this.lampadaImportante = lampadaImportante;
+		this.estadoInicial = estadoInicial.toCharArray();
+		this.lampadaImportante = lampadaImportante.toCharArray();
 		this.numeroOperacoes = 0;
 		
 		InicializaGrafo();
@@ -81,13 +81,13 @@ public abstract class LampadaAcesa implements ILampadaAcesa {
 	/**
 	 * @return Obtém o estado inicial das lâmpadas
 	 */
-	public String getEstadoInicial() { return estadoInicial; }
+	public String getEstadoInicial() { return String.valueOf(estadoInicial); }
 
 
 	/**
 	 * @return Obtém as lâmpadas que são importantes
 	 */
-	public String getLampadaImportante() { return lampadaImportante; }
+	public String getLampadaImportante() { return String.valueOf(lampadaImportante.toString()); }
 
 
 	/**
@@ -121,6 +121,20 @@ public abstract class LampadaAcesa implements ILampadaAcesa {
 		
 	} // Fim do método InicializaGrafo
 	
+	
+	/**
+	 * Alterna o estado de todas as lâmpadas
+	 * @param caminho
+	 */
+	protected void AcenderLampada(int[] caminho) {
+		
+		for (int i = 0; i < caminho.length; i++) {
+			
+			if (i != 1)
+				estadoInicial[caminho[i] - 1] = '1';
+		}
+		
+	} // Fim do método AcenderLampada
 
 
 	/* (non-Javadoc)

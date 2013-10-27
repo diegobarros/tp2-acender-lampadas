@@ -62,12 +62,24 @@ public class LampadaAcesaGuloso extends LampadaAcesa {
 		ArrayList solucao = new ArrayList();
 		
 		ObtemCaminhos();
-		// Escolhe caminho Ótimo
+		// Escolhe caminho Ótimo [EncontraMelhorCaminho();]
 		// Acende as Luzes
 		
 		// Se (Não Acendeu todas as luzes importantes) então
 		numeroOperacoes++;
 		
+		
+		int[] path = { 2, 0, 1, 4, 5 };
+		
+		int[] path2 = { 3, 1, 4, 6 };
+		
+
+		System.out.println(getEstadoInicial());
+		AcenderLampada(path);
+		System.out.println(getEstadoInicial());
+		
+		AcenderLampada(path2);
+		System.out.println(getEstadoInicial());
 		
 	} // Fim do método AlgoritmoGuloso
 	
@@ -137,7 +149,4 @@ public class LampadaAcesaGuloso extends LampadaAcesa {
 	} // Fim do método ObtemCaminho
 	
 	
-	
-	
-
 } // Fim da classe LampadaAcesaGuloso
