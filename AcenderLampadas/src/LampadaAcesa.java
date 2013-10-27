@@ -87,7 +87,7 @@ public abstract class LampadaAcesa implements ILampadaAcesa {
 	/**
 	 * @return Obtém as lâmpadas que são importantes
 	 */
-	public String getLampadaImportante() { return String.valueOf(lampadaImportante.toString()); }
+	public String getLampadaImportante() { return String.valueOf(lampadaImportante); }
 
 
 	/**
@@ -128,19 +128,48 @@ public abstract class LampadaAcesa implements ILampadaAcesa {
 	 */
 	protected void AcenderLampada(int[] caminho) {
 		
-		for (int i = 0; i < caminho.length; i++) {
+		for (int i = 0; i < caminho.length - 1; i++) {
 			
-			if (i != 1)
-				estadoInicial[caminho[i] - 1] = '1';
+			int v = ObtemIntersecao(caminho[i], caminho[i + 1]);
+			
+			estadoInicial[v - 1] = '1';
+			
+				
 		}
 		
 	} // Fim do método AcenderLampada
+	
+	
+	/**
+	 * Dada uma aresta de um caminho retorna a próxima interseção do caminho 
+	 * @param u Ponto Inicial da aresta
+	 * @param v Ponto final da aresta
+	 * @return A próxima interseção do caminho
+	 */
+	protected int ObtemIntersecao(int u, int v) {
+		
+		int proximaIntersecao = u;
+		
+		for (int i = 0; i < ruas.length; i++) {
+			
+			int verticeInicial = ruas[i];
+			int verticeFinal = (i + 1);
+			
+			
+			if ((verticeInicial == u) && (verticeFinal == v))
+				proximaIntersecao = v;
+			
+		}
+		
+		
+		return proximaIntersecao;
+	} // Fim do método ObtemIntersecao
 
 	/**
 	 * Verifica se todas as lâmpadas importantes da cidade foram acesas
 	 * @return True se todas as lâmpadas importantes da cidade foram acesas caso contrário retorna False
 	 */
-	protected boolean TodasLampasImportantesAcesas() {
+	protected boolean TodasLampadasImportantesAcesas() {
 		
 		for (int i = 0; i < lampadaImportante.length; i++) {
 			

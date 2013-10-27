@@ -83,6 +83,32 @@ public class Grafo {
 
 	} // Fim do Construtor
 	
+
+	/**
+	 * Inicializa um novo grafo que é uma cópia exata de um grafo G
+	 * @param grafo o grafo para copiar
+	 */
+	public Grafo(Grafo grafo) {
+		
+		this(grafo.getNumeroDeVertices());
+		this.numeroDeArestas = grafo.getNumeroDeArestas();
+		
+		for (int u = 0; u < grafo.getNumeroDeVertices(); u++) {
+			
+			// Mantém a lista de Adj. na mesma ordem da original
+			Stack<Aresta> pilha = new Stack<Aresta>();
+			
+			
+			for (Aresta aresta : grafo.listaAdj[u])
+				pilha.push(aresta);
+			
+			for (Aresta aresta : pilha)
+				listaAdj[u].add(aresta);
+			
+		} // Fim for u = 0
+		
+	} // Fim do construtor Grafo
+	
 	
 	/**
 	 * Obtém o número de Vértices o Grafo
@@ -199,30 +225,6 @@ public class Grafo {
 
 
 
-	/**
-	 * Inicializa um novo grafo que é uma cópia exata de um grafo G
-	 * @param grafo o grafo para copiar
-	 */
-	public Grafo(Grafo grafo) {
-		
-		this(grafo.getNumeroDeVertices());
-		this.numeroDeArestas = grafo.getNumeroDeArestas();
-		
-		for (int u = 0; u < grafo.getNumeroDeVertices(); u++) {
-			
-			// Mantém a lista de Adj. na mesma ordem da original
-			Stack<Aresta> pilha = new Stack<Aresta>();
-			
-			
-			for (Aresta aresta : grafo.listaAdj[u])
-				pilha.push(aresta);
-			
-			for (Aresta aresta : pilha)
-				listaAdj[u].add(aresta);
-			
-		} // Fim for u = 0
-		
-	} // Fim do construtor Grafo
 	
 	public Iterable<Aresta> Adjacencias(int u) {
 		return listaAdj[u];
@@ -368,6 +370,9 @@ public class Grafo {
 		
 		return stringBuilder.toString();
 	}
+	
+	
+	
 
 	/** 
 	 * A representação em string do Grafo

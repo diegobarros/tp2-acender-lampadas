@@ -59,29 +59,31 @@ public class LampadaAcesaGuloso extends LampadaAcesa {
 	 */
 	private void AlgoritmoGuloso() {
 		
-		ArrayList solucao = new ArrayList();
+		int[] path = { 2, 0, 1, 4, 5 };
+		int[] path2 = { 3, 1, 4, 6 };
 		
 		ObtemCaminhos();
+		System.out.println(getEstadoInicial());
+		while (!TodasLampadasImportantesAcesas()) {
+			
+			int[] caminho = EncontraMelhorCaminho();
+			AcenderLampada(caminho);
+			numeroOperacoes++;
+			
+			System.out.println(Arrays.toString(caminho));
+			System.out.println(getLampadaImportante());
+			System.out.println(getEstadoInicial());
+
+		} // Fim de while
+		
+		  
 		// Escolhe caminho Ótimo [EncontraMelhorCaminho();]
 		// Acende as Luzes
 		
 		// Se (Não Acendeu todas as luzes importantes) então
-		numeroOperacoes++;
 		
 		
-		int[] path = { 2, 0, 1, 4, 5 };
-		
-		int[] path2 = { 3, 1, 4, 6 };
-		
-		System.out.println(TodasLampasImportantesAcesas());
-		System.out.println(getEstadoInicial());
-		AcenderLampada(path);
-		System.out.println(getEstadoInicial());
-		
-		AcenderLampada(path2);
-		System.out.println(getEstadoInicial());
-		
-		System.out.println(TodasLampasImportantesAcesas());
+	
 		
 	} // Fim do método AlgoritmoGuloso
 	
@@ -93,7 +95,39 @@ public class LampadaAcesaGuloso extends LampadaAcesa {
 	 */
 	private int[] EncontraMelhorCaminho() {
 		
-		return null;
+		Caminho solucao = null;
+		int numeroCorrespondencias = 0;
+		int maiorNumeroCorrespondencias = Integer.MIN_VALUE;
+		
+		
+		for (int i = caminhos.size() - 1; i > 0; i--) {
+			
+			
+			int[] caminho = caminhos.get(i).getCaminho();
+			
+						
+			for (int j = 0; j < caminho.length - 1; j++) {
+			
+				int v = ObtemIntersecao(caminho[j], caminho[j + 1]);
+				
+				// SE o caminho passa por uma rua importante e a lampada estiver apgada ENTÃO
+				if ((getLampadaImportante().charAt(v - 1) == '1') && (getEstadoInicial().charAt(v - 1) == '0'))
+					numeroCorrespondencias++;
+			
+				
+			} // Fim for int j = 0
+			
+			
+			if (numeroCorrespondencias > maiorNumeroCorrespondencias) {
+				maiorNumeroCorrespondencias = numeroCorrespondencias;
+				solucao = caminhos.get(i);
+			}
+			
+			numeroCorrespondencias = 0;
+			
+		} // Fim for int i = n -1
+		
+		return solucao.getCaminho();
 		
 	} // Fim do método EncontraMelhorCaminho
 	
