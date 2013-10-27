@@ -136,6 +136,22 @@ public abstract class LampadaAcesa implements ILampadaAcesa {
 		
 	} // Fim do método AcenderLampada
 
+	/**
+	 * Verifica se todas as lâmpadas importantes da cidade foram acesas
+	 * @return True se todas as lâmpadas importantes da cidade foram acesas caso contrário retorna False
+	 */
+	protected boolean TodasLampasImportantesAcesas() {
+		
+		for (int i = 0; i < lampadaImportante.length; i++) {
+			
+			if ((lampadaImportante[i] == '1') && (estadoInicial[i] != '1') )
+				return false;
+			
+		} // Fim for int i = 0
+		
+		return true;
+		
+	} // Fim do método TodasLampasImportantesAcesas
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()

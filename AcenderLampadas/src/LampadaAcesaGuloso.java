@@ -73,7 +73,7 @@ public class LampadaAcesaGuloso extends LampadaAcesa {
 		
 		int[] path2 = { 3, 1, 4, 6 };
 		
-
+		System.out.println(TodasLampasImportantesAcesas());
 		System.out.println(getEstadoInicial());
 		AcenderLampada(path);
 		System.out.println(getEstadoInicial());
@@ -81,9 +81,21 @@ public class LampadaAcesaGuloso extends LampadaAcesa {
 		AcenderLampada(path2);
 		System.out.println(getEstadoInicial());
 		
+		System.out.println(TodasLampasImportantesAcesas());
+		
 	} // Fim do método AlgoritmoGuloso
 	
 	
+	
+	/**
+	 * Obtém o caminho que possui o maior número de lâmpadas importantes desligadas
+	 * @return Um vetor contendo o caminho
+	 */
+	private int[] EncontraMelhorCaminho() {
+		
+		return null;
+		
+	} // Fim do método EncontraMelhorCaminho
 	
 	private void ObtemCaminhos() {
 		
