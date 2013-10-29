@@ -131,10 +131,8 @@ public abstract class LampadaAcesa implements ILampadaAcesa {
 		for (int i = 0; i < caminho.length - 1; i++) {
 			
 			int v = ObtemIntersecao(caminho[i], caminho[i + 1]);
-			
 			estadoInicial[v - 1] = '1';
-			
-				
+
 		}
 		
 	} // Fim do método AcenderLampada

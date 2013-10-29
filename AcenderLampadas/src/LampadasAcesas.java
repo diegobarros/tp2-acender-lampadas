@@ -211,6 +211,7 @@ public class LampadasAcesas {
 		
 		System.out.println("\nGRAFO: Lista de Adjacências: ");
 		System.out.println(lampadaAcesaGuloso.getGrafo().ListaAdjInt());
+	
 		
 		
 		long tempoInicioGuloso = System.currentTimeMillis();
@@ -219,8 +220,7 @@ public class LampadasAcesas {
 		
 		System.out.println("\nAlgoritmo Guloso");
 		System.out.println("Resultado: " + lampadaAcesaGuloso.getNumeroOperacoes());
-		System.out.println("TEMPO: " + TempoExecucao(tempoInicioGuloso, tempoFimGuloso));
-		
+		System.out.println("TEMPO: " + TempoExecucao(tempoInicioGuloso, tempoFimGuloso) + " ms");
 
 		long tempoInicioPD = System.currentTimeMillis();
 		resultadoGuloso = lampadaAcesaPD.minimizar(ruas, estadoInicial, lampadaImportante);
@@ -228,7 +228,7 @@ public class LampadasAcesas {
 		
 		System.out.println("\nAlgoritmo de Programação Dinâmica");
 		System.out.println("Resultado: " + lampadaAcesaPD.getNumeroOperacoes());
-		System.out.println("TEMPO: " + TempoExecucao(tempoInicioPD, tempoFimPD));
+		System.out.println("TEMPO: " + TempoExecucao(tempoInicioPD, tempoFimPD) + " ms");
 		
 		
 		System.out.println();

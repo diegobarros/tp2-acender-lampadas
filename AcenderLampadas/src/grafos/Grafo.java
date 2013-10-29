@@ -136,9 +136,10 @@ public class Grafo {
 
 		listaAdj[u].add(aresta);	// Adiciona uma aresta de u para v
 		listaAdj[v].add(aresta); 	// Adiciona outra resta de v para u
-		numeroDeArestas++;			// Incrementa o número de arestasv
+		
 		arestas.add(aresta);
 		AdicionaAresta(u, v);
+		
 
 	} // Fim do método AdicionaAresta
 	
@@ -217,6 +218,7 @@ public class Grafo {
 
 				listaAdjInt[u].add(v);	// Adiciona uma aresta de u para v
 				listaAdjInt[v].add(u); 	// Adiciona outra resta de v para u
+				numeroDeArestas++;			// Incrementa o número de arestasv
 			}
 
 		} // Fim de if/else

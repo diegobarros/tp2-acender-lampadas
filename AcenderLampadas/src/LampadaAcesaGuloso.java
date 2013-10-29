@@ -58,12 +58,13 @@ public class LampadaAcesaGuloso extends LampadaAcesa {
 	 * Algoritmo Guloso para solução do problema
 	 */
 	private void AlgoritmoGuloso() {
-		
-		int[] path = { 2, 0, 1, 4, 5 };
-		int[] path2 = { 3, 1, 4, 6 };
-		
+		 
 		ObtemCaminhos();
+		
+		System.out.println();
 		System.out.println(getEstadoInicial());
+		System.out.println();
+		
 		while (!TodasLampadasImportantesAcesas()) {
 			
 			int[] caminho = EncontraMelhorCaminho();
@@ -73,17 +74,9 @@ public class LampadaAcesaGuloso extends LampadaAcesa {
 			System.out.println(Arrays.toString(caminho));
 			System.out.println(getLampadaImportante());
 			System.out.println(getEstadoInicial());
+			System.out.println();
 
 		} // Fim de while
-		
-		  
-		// Escolhe caminho Ótimo [EncontraMelhorCaminho();]
-		// Acende as Luzes
-		
-		// Se (Não Acendeu todas as luzes importantes) então
-		
-		
-	
 		
 	} // Fim do método AlgoritmoGuloso
 	
@@ -110,7 +103,7 @@ public class LampadaAcesaGuloso extends LampadaAcesa {
 			
 				int v = ObtemIntersecao(caminho[j], caminho[j + 1]);
 				
-				// SE o caminho passa por uma rua importante e a lampada estiver apgada ENTÃO
+				// SE o caminho passa por uma rua importante e a lâmpada estiver apgada ENTÃO
 				if ((getLampadaImportante().charAt(v - 1) == '1') && (getEstadoInicial().charAt(v - 1) == '0'))
 					numeroCorrespondencias++;
 			
@@ -131,6 +124,11 @@ public class LampadaAcesaGuloso extends LampadaAcesa {
 		
 	} // Fim do método EncontraMelhorCaminho
 	
+	
+	
+	/**
+	 * Obtém todos os possíveis caminhos do grafo, através do algoritmo de Busca em Largura
+	 */
 	private void ObtemCaminhos() {
 		
 		
